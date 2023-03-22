@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "api"
+version = "0.1.0"
+description = ""
+authors = ["slocksert"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.94.1"
+uvicorn = "^0.21.1"
+sqlalchemy = "^2.0.6"
+pymysql = "^1.0.2"
+alembic = "^1.10.2"
+python-decouple = "^3.8"
+passlib = "^1.7.4"
+python-jose = "^3.3.0"
+python-multipart = "^0.0.6"
+cryptography = "^39.0.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
