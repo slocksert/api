@@ -1,4 +1,4 @@
-function sendData() {
+async function sendData() {
     const form_data = document.getElementById('form_data')
     const username = document.getElementById('username')
     const password = document.getElementById('password')
@@ -10,28 +10,26 @@ function sendData() {
         const username_value = username.value
         const password_value = password.value
         const confirm_password_value = confirm_password.value
+        const options = {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json;charset=UTF-8",
+          },
+          body: JSON.stringify({
+            "username": username_value,
+            "password": password_value,
+          })
+        }
 
         if (password_value == confirm_password_value) {   
-            const options = {
-                method: "POST",
-                headers: {
-                  Accept: "application/json",
-                  "Content-Type": "application/json;charset=UTF-8",
-                },
-                body: JSON.stringify({
-                  "username": username_value,
-                  "password": password_value,
-                })
-              }
-
-              fetch(url_register, options)
-                .then((response) => response.json())
-                .then((data) => {
-                    console.log(data);
-                })
-
+          const response = await fetch(url_register, options)
+          if (response.ok) {
+            alert("Usuário cadastrado")
+            location.href = 'http://localhost:5500/public/login.html'
+          }
         } else {
-            alert('Passwords do not match')
+            alert('As senhas não são iguais')
         }
     }   
 }
