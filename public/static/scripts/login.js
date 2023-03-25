@@ -1,12 +1,8 @@
-function sendLogin() {
+async function sendLogin() {
     const username = document.getElementById("login_username")
     const password = document.getElementById("login_password")
     const form = document.getElementById('form_data')
     const url_login = 'http://localhost:8000/user/login'
-    //const submit = document.getElementById("button_").onclick = function () {
-           // location.href = 'http://localhost:8000/test/test'
-   // }
-
 
     form.onsubmit = async (event) => {
         event.preventDefault()
@@ -19,9 +15,9 @@ function sendLogin() {
         var formBody = []
         
         for (var property in details) {
-            var encondeKey = property
-            var encodeValue = details[property]
-            formBody.push(encondeKey + "=" + encodeValue)
+            var key = property
+            var value = details[property]
+            formBody.push(key + "=" + value)
         }
         formBody = formBody.join("&")
 
@@ -33,31 +29,19 @@ function sendLogin() {
             body: formBody
           }
 
-          fetch(url_login, options)
-          .then( response => {
-            return response.json
-          })
-          .then(json => {
-            if (json.status === "success") {
+          const response = await fetch(url_login, options)
+          if (!response.ok) {
+            throw new Error("Failed to login")
+          }
 
-                var access_token = json['access_token']
-                console.log(access_token)
-                
-                //fetch('http://localhost:8000/test/test'), {
-                  //  method: "GET",
-                    //headers: {
-                      //  "Authorization": "Bearer " + access_token
-                   // }
-                  //}
+          const data = await response.json()
+          localStorage.setItem('token', data.access_token)
 
-                //location.href = "http://localhost:8000/test/test"
-            }
-          })
-    }
-}
+          location.href = "http://localhost:5500/public/home.html"
+
+    }}
 
 function Login() {
-    console.log("Login")
     sendLogin()
 }
 

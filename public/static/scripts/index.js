@@ -37,7 +37,6 @@ function sendData() {
 }
 
 function Register() {
-    console.log("Register")
     sendData()
 }
 
