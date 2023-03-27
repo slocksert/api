@@ -29,7 +29,7 @@ class AuthUser:
         except IntegrityError:
             raise HTTPException(
                 status_code=status.HTTP_400_BAD_REQUEST,
-                detail="Usúario já existe"
+                detail="Existent user"
             )
         
 
@@ -39,13 +39,13 @@ class AuthUser:
         if user_db is None:
             raise HTTPException(
                 status_code=status.HTTP_401_UNAUTHORIZED,
-                detail="Nome de usuário ou senha incorretos"
+                detail="Incorrect username or password"
             )
         
         if not crypt_context.verify(user.password, user_db.password):
             raise HTTPException(
                 status_code=status.HTTP_401_UNAUTHORIZED,
-                detail="Nome de usuário ou senha incorretos"
+                detail="Incorrect username or password "
             )
         
         exp = datetime.utcnow() + timedelta(minutes=expires_in)
@@ -68,7 +68,7 @@ class AuthUser:
         except JWTError:
             raise HTTPException(
                 status_code=status.HTTP_401_UNAUTHORIZED,
-                detail='Token de acesso inválido'
+                detail='Invalid access token'
             )
         
         user_on_db = self.db.query(models.Dados).filter_by(username=data['sub']).first()
@@ -76,6 +76,6 @@ class AuthUser:
         if user_on_db is None:
             raise HTTPException(
                 status_code=status.HTTP_401_UNAUTHORIZED,
-                detail='Token de acesso inválido'
+                detail='Invalid access token'
             )
         

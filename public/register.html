@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>API Sign up</title>
+        <link rel="stylesheet" type="text/css" href="static/css/stylesheet.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="static/scripts/register.js" defer></script>
+    </head>
+    <body>
+
+        <main>
+            <form id="form_data">
+                <h1>API</h1>
+                
+                Username<br>
+                <input id="username" required type="text" name="name"><br>
+                Create a password<br>
+                <input id="password" required type="password" name="password"><br>
+                Retype password<br>
+                <input id="password2" required id="retype" type="password" name="retype_password"><br>
+                
+                <label class="services">
+                    <input required type="checkbox" name="terms">By signing up to API TEST you agree to your
+                    <a href="#service">Terms of Service</a> and <a href="#policy">Privacy Policy</a>
+                </label>
+                    
+                <div class="button">
+                    <input type="submit" class="button" value="Sign up">
+                </div>
+            </form>
+            
+            <p id="sign-in">Already have an account? <a href="login.html">Login Now!</a></p>
+            
+        </main>
+</body>
+</html>

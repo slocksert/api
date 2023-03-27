@@ -7,25 +7,6 @@ body {
     background-color: #4A4E69;
 }
 
-#home {
-    text-align: left;
-    margin-left: 10px;
-    margin: auto;
-}
-
-.button {
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-input {
-    margin: 3px;
-}
-
-input#retype {
-    margin-bottom: 10px;
-}
-
 main {
     margin: auto;
     margin-top: 60px;
@@ -38,11 +19,6 @@ main {
     padding-bottom: 20px;
 }
 
-p#footer {
-    display: inline-block;
-    margin-top: 10px;
-}
-
 .header {
     background-color: white;
     height: 40px;
@@ -51,8 +27,8 @@ p#footer {
 
 .logo {
     text-align: left;
-    position: relative;
-    right: 600px;
+    position: absolute;
+    right: 1236px;
 }
 
 div#login {
@@ -62,40 +38,25 @@ div#login {
     bottom: 38px;
 }
 
-div#register {
+.logout {
     text-align: right;
     position: relative;
-    right: 110px;
-    bottom: 69px;
+    left: 600px;
+    bottom: 26px;
 }
 
-.login_button {
-    height: 25px;
-}
-
-.register_button {
-    height: 25px;
-}
-
-div#logout_div {
+.username {
     text-align: right;
     position: relative;
-    bottom: 157px;
-    right: 20px;
+    left: 500px;
+    top: 14px;
+    font-style: italic;
+
 }
 
 .welcome {
     text-align: right;
     position: relative;
-    right: 200px;
-    bottom: 80px;
+    left: 413px;
+    bottom: 5px;
 }
-
-.user {
-    text-align: right;
-    position: relative;
-    right: 100px;
-    bottom: 115.9px;
-    font-style: italic;
-}
-

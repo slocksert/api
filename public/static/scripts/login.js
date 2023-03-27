@@ -8,6 +8,7 @@ async function sendLogin() {
         event.preventDefault()
         const username_value = username.value
         const password_value = password.value
+        localStorage.setItem('user', username_value)
         var details = {
             "username": username_value,
             "password": password_value
@@ -31,18 +32,15 @@ async function sendLogin() {
 
           const response = await fetch(url_login, options)
           if (!response.ok) {
+            alert("Incorrect username or password")
             throw new Error("Failed to login")
           }
 
           const data = await response.json()
           localStorage.setItem('token', data.access_token)
 
-          location.href = "http://localhost:5500/public/home.html"
+          location.href = "http://localhost:5500/public/index_auth.html"
 
     }}
 
-function Login() {
-    sendLogin()
-}
-
-Login()
+sendLogin()

@@ -1,15 +1,15 @@
-async function homeData() {
+async function verifyToken(){
     const response = await fetch('http://localhost:8000/test/test', {
         method: 'GET',
         headers: {'Authorization': `Bearer ${localStorage.getItem('token')}`}
         
 })
 
-    if (response.ok) {
-        location.href = 'http://localhost:5500/public/index_auth.html'   
+    if (!response.ok) {
+        location.href = 'http://localhost:5500/public/index.html'   
     }
-    
-
 }
 
-homeData()
+function App(){
+    verifyToken()
+}

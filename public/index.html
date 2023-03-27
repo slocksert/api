@@ -1,40 +1,31 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>API TEST</title>
-        <link rel="stylesheet" type="text/css" href="static/css/stylesheet.css" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="static/scripts/index.js" defer></script>
-    </head>
-    <body>
-
-        <div class="header">
-                <a href="index.html"><img class="logo" src="static/media/api.png" width="50px" height="40px" alt="logo api"></a>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/home.css">
+    <script src="static/scripts/index.js"></script>
+    <title>Home</title>
+</head>
+<body>
+    <div class="header">
+        <div>
+            <a href="index.html"><img class="logo" src="static/media/api.png" width="50px" height="40px" alt="logo api"></a>
         </div>
 
-        <main>
-            <form id="form_data">
-                <h1>API TEST</h1>
-                
-                Username<br>
-                <input id="username" required type="text" name="name"><br>
-                Create a password<br>
-                <input id="password" required type="password" name="password"><br>
-                Retype password<br>
-                <input id="password2" required id="retype" type="password" name="retype_password"><br>
-                
-                <label class="services">
-                    <input required type="checkbox" name="terms">By signing up to API TEST you agree to your
-                    <a href="#service">Terms of Service</a> and <a href="#policy">Privacy Policy</a>
-                </label>
-                    
-                <div class="button">
-                    <input type="submit" class="button" value="Sign up">
-                </div>
-            </form>
-            
-            <p id="sign-in">Already have an account? <a href="login.html">Login Now!</a></p>
-            
-        </main>
+        <div id="login">
+            <a href="login.html"><input class="login_button" type="button" value="Sign in"></a>
+        </div>
+
+        <div id="register">
+            <a href="register.html"><input class="register_button" type="button" value="Sign up"></a>
+        </div>
+    </div> 
+
+
+    <main>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic adipisci aut accusamus sint voluptate. Quasi veniam velit at, temporibus natus atque ab facere sunt commodi soluta eos illum iure mollitia!</p>
+    </main>
 </body>
 </html>

@@ -23,7 +23,7 @@ input {
 }
 
 input#retype {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 main {
@@ -38,18 +38,7 @@ main {
     padding-bottom: 20px;
 }
 
-p#footer {
-    display: inline-block;
-    margin-top: 10px;
-}
-
-.header {
-    background-color: #22223B;
-    height: 40px;
-}
-
-.logo {
-    display: block;
-    text-align: left;
-    margin-left: 10px;
+.services {
+    position: relative;
+    top: 8px;
 }

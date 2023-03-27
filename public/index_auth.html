@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/index_auth.css">
+    <script src="static/scripts/index_auth.js"> defer </script>
+    <title>Home</title>
+</head>
+<body>
+    <div class="header">
+        <div>
+
+        </div>
+
+        <a href="index.html"><img class="logo" src="static/media/api.png" width="50px" height="40px" alt="logo api"></a>
+
+        <div id="username_div">
+            
+        </div>
+
+        <div id="welcome_div">
+
+        </div>
+
+        <div id="logout_div">
+            <a href="index.html"><input onclick="logOut()" class="logout" type="button" value="Logout"></a>
+        </div>
+    </div> 
+
+    <main>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic adipisci aut accusamus sint voluptate. Quasi veniam velit at, temporibus natus atque ab facere sunt commodi soluta eos illum iure mollitia!</p>
+    </main>
+
+    <script>
+    
+    const username = document.createElement('span')
+    const welcome = document.createElement('span')
+    welcome.innerText = "Welcome"
+    username.innerText = `${localStorage.getItem('user')}`
+    welcome.classList.add('welcome')
+    username.classList.add('username')
+    const div_welcome = document.getElementById('welcome_div')
+    div_welcome.appendChild(welcome)
+    const div_username  = document.getElementById('username_div')
+    div_username.appendChild(username)
+
+    </script>
+</body>
+</html>
