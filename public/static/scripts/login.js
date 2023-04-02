@@ -38,9 +38,36 @@ async function sendLogin() {
 
           const data = await response.json()
           localStorage.setItem('token', data.access_token)
-
+          localStorage.setItem('exp', data.exp)
           location.href = "http://localhost:5500/public/index_auth.html"
 
     }}
 
-sendLogin()
+async function verifyToken() {
+  
+  const response = await fetch('http://localhost:8000/test/test', {
+    method: "GET",
+    headers: {
+        "Authorization": `Bearer ${localStorage.getItem('token')}`
+    }
+})
+
+if (response.status == 200){
+    location.href = 'http://localhost:5500/public/index_auth.html'
+}
+
+}
+
+async function setCookie(cname, cvalue, exp){
+  let expires = `expires=${exp}`
+  localStorage.setItem('cvalue', cvalue)
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/"
+}
+
+function App() {
+  verifyToken()
+  sendLogin()
+  setCookie(cname='token', cvalue=`${localStorage.getItem('token')}`, exp=`${localStorage.getItem('exp')}`)
+}
+
+App()

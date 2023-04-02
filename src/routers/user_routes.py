@@ -6,23 +6,28 @@ from src.schemas import schemas
 from fastapi.responses import JSONResponse
 from fastapi.security import OAuth2PasswordRequestForm
 from src.infra.sqlalchemy.depends import token_verifier
+from src.infra.providers import publisher
 
 user_router = APIRouter(prefix='/user')
 test_router = APIRouter(prefix='/test', dependencies=[Depends(token_verifier)])
 
 @user_router.post('/register')
-async def user_register(dados:schemas.DadosUsuario, db: Session = Depends(get_db)):
+async def user_register(user:schemas.Register, db: Session = Depends(get_db)):
     au = AuthUser(db=db)
-    au.user_register(user=dados)
+    au.user_register(user=user)
+    publisher.publisher.send_message({
+        "email": user.email,
+        "username": user.username
+    })
     return JSONResponse(
-        content=({"msg": "Usuário criado com sucesso"}),
+        content=({"msg": "User created successfully"}),
         status_code=status.HTTP_201_CREATED
     )
 
 @user_router.post('/login')
 async def user_login(request_form_user: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)):
     uc = AuthUser(db=db)
-    user = schemas.DadosUsuario(
+    user = schemas.Login(
         username=request_form_user.username,
         password=request_form_user.password
     )
@@ -35,4 +40,4 @@ async def user_login(request_form_user: OAuth2PasswordRequestForm = Depends(), d
 
 @test_router.get('/test')
 async def verify():
-    return "funcionando"
+    return "working"

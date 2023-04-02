@@ -18,23 +18,32 @@ class AuthUser:
     def __init__(self, db: Session):
         self.db = db
 
-    def user_register(self, user: schemas.DadosUsuario):
-        user_models = models.Dados(
+    def user_register(self, user: schemas.Register):
+        user_models = models.Data(
             username=user.username,
-            password=crypt_context.hash(user.password)
+            password=crypt_context.hash(user.password),
+            email=user.email
         )
+
+        user_db = self.db.query(models.Data).filter_by(username=user.username).first()
+        email_db = self.db.query(models.Data).filter_by(email=user.email).first()
+
+        if user_db:
+            raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Existent User")
+        elif email_db:
+            raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Existent Email")
+
         try:
             self.db.add(user_models)
             self.db.commit()
         except IntegrityError:
             raise HTTPException(
-                status_code=status.HTTP_400_BAD_REQUEST,
-                detail="Existent user"
+                status_code=status.HTTP_409_CONFLICT,
+                detail="Existent user or email"
             )
-        
 
-    def user_login(self, user: schemas.DadosUsuario, expires_in: int = 30):
-        user_db = self.db.query(models.Dados).filter_by(username=user.username).first()
+    def user_login(self, user: schemas.Login, expires_in: int = 30):
+        user_db = self.db.query(models.Data).filter_by(username=user.username).first()
 
         if user_db is None:
             raise HTTPException(
@@ -71,7 +80,7 @@ class AuthUser:
                 detail='Invalid access token'
             )
         
-        user_on_db = self.db.query(models.Dados).filter_by(username=data['sub']).first()
+        user_on_db = self.db.query(models.Data).filter_by(username=data['sub']).first()
 
         if user_on_db is None:
             raise HTTPException(
