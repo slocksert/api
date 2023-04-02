@@ -51,22 +51,22 @@ p#footer {
 
 .logo {
     text-align: left;
-    position: relative;
-    right: 600px;
+    position: absolute;
+    right: 1225px;
 }
 
 div#login {
     text-align: right;
-    position: relative;
+    position: absolute;
     right: 25px;
-    bottom: 38px;
+    bottom: 581px;
 }
 
 div#register {
     text-align: right;
-    position: relative;
+    position: absolute;
     right: 110px;
-    bottom: 69px;
+    bottom: 581px;
 }
 
 .login_button {
@@ -77,12 +77,6 @@ div#register {
     height: 25px;
 }
 
-div#logout_div {
-    text-align: right;
-    position: relative;
-    bottom: 157px;
-    right: 20px;
-}
 
 .welcome {
     text-align: right;
